@@ -25,7 +25,7 @@ class Department extends Company {
 class Team extends Department {
     String teamName;
     Team(String name, int year, String dept, String team) {
-        super(name, year, dept); // Call Department constructor
+        super(name, year, dept); 
         teamName = team;
         System.out.println("Team constructor called.");
     }
