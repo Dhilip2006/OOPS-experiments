@@ -1,23 +1,36 @@
+import java.util.Scanner;
+
+class BankAccount {
+    String accountHolder;
+    String accountType;
+    double balance;
+
+    void openAccount() {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter Account Holder Name: ");
+        accountHolder = sc.nextLine();
+
+        System.out.print("Enter Account Type (Savings/Current): ");
+        accountType = sc.nextLine();
+
+        System.out.print("Enter Initial Balance: ");
+        balance = sc.nextDouble();
+        sc.close();
+    }
+
+    void showAccount() {
+        System.out.println("\n--- Account Details ---");
+        System.out.println("Account Holder : " + accountHolder);
+        System.out.println("Account Type   : " + accountType);
+        System.out.println("Balance        : " + balance);
+    }
+}
+
 public class classobject {
-    String name;
-    int rollNumber;
-    double marks;
-
-    void setDetails(String studentName, int studentRoll, double studentMarks) {
-        name = studentName;
-        rollNumber = studentRoll;
-        marks = studentMarks;
-    }
-
-    void displayDetails() {
-        System.out.println("Student Name: " + name);
-        System.out.println("Roll Number : " + rollNumber);
-        System.out.println("Marks       : " + marks + "%");
-    }
-
     public static void main(String[] args) {
-        classobject student1 = new classobject();
-        student1.setDetails("Arjun Kumar", 101, 87.5);
-        student1.displayDetails();
+        BankAccount acc1 = new BankAccount();
+        acc1.openAccount();
+        acc1.showAccount();
     }
 }
