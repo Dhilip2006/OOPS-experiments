@@ -1,48 +1,62 @@
-class Company {
-    String companyName;
-    int establishedYear;
-    Company(String name, int year) {
-        companyName = name;
-        establishedYear = year;
-        System.out.println("Company constructor called.");
+import java.util.Scanner;
+class Library {  
+    String libraryName;
+    void getLibraryInfo() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter Library Name: ");
+        libraryName = sc.nextLine();
     }
-    void displayCompany() {
-        System.out.println("Company: " + companyName);
-        System.out.println("Established: " + establishedYear);
-    }
-}
-class Department extends Company {
-    String departmentName;
-    Department(String name, int year, String dept) {
-        super(name, year); 
-        departmentName = dept;
-        System.out.println("Department constructor called.");
-    }
-    void displayDepartment() {
-        System.out.println("Department: " + departmentName);
+    void showLibraryInfo() {
+        System.out.println("Library Name: " + libraryName);
     }
 }
-class Team extends Department {
-    String teamName;
-    Team(String name, int year, String dept, String team) {
-        super(name, year, dept); 
-        teamName = team;
-        System.out.println("Team constructor called.");
+class MemberSingle extends Library {  
+    String memberName;
+    void getMemberDetails() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter Member Name (Single Inheritance): ");
+        memberName = sc.nextLine();
     }
-    void displayTeam() {
-        System.out.println("Team: " + teamName);
+    void showMemberDetails() {
+        System.out.println("Member Name: " + memberName);
+    }
+}
+class MemberMulti extends Library {  
+    String memberName;
+    void getMemberInfo() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter Member Name (Multilevel Inheritance): ");
+        memberName = sc.nextLine();
+    }
+}
+class Borrow extends MemberMulti {  
+    String bookName;
+    void getBookInfo() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter Book Name to Borrow: ");
+        bookName = sc.nextLine();
+    }
+    void showBorrowDetails() {
+        System.out.println("Library: " + libraryName);
+        System.out.println("Member: " + memberName);
+        System.out.println("Borrowed Book: " + bookName);
     }
 }
 public class InheritanceDemo {
     public static void main(String[] args) {
-        System.out.println("=== Single Inheritance ===");
-        Department dept = new Department("TechNova Solutions", 2005, "Research & Development");
-        dept.displayCompany();
-        dept.displayDepartment();
-        System.out.println("\n=== Multilevel Inheritance ===");
-        Team team = new Team("TechNova Solutions", 2005, "Research & Development", "AI Innovation Team");
-        team.displayCompany();
-        team.displayDepartment();
-        team.displayTeam();
+        System.out.println("------Single Inheritance Demo -----");
+        MemberSingle single = new MemberSingle();
+        single.getLibraryInfo();      
+        single.getMemberDetails();     
+        System.out.println("\nSingle Inheritance Details:");
+        single.showLibraryInfo();
+        single.showMemberDetails();
+        System.out.println("\n----- Multilevel Inheritance Demo -----");
+        Borrow multi = new Borrow();
+        multi.getLibraryInfo();        
+        multi.getMemberInfo();         
+        multi.getBookInfo();           
+        System.out.println("\nMultilevel Inheritance Details:");
+        multi.showBorrowDetails();
     }
 }
